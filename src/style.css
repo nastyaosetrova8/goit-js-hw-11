@@ -1,0 +1,111 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  width: 1158px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  padding: 60;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.link {
+  display: flex;
+  text-decoration: none;
+  color: #030a57;
+  background-color: #f0f8ff;
+  border-radius: 24px;
+  border: 1px solid #030a57;
+  overflow: hidden;
+  text-align: center;
+}
+
+.photo-card {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  padding: 16px 16px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.info-item:not(:last-child) {
+  margin-right: 24px;
+}
+
+.search-form {
+  margin-bottom: 30px;
+}
+
+input {
+  height: 40px;
+  width: 300px;
+  margin-right: 24px;
+  border: 1px solid #030360;
+  border-radius: 4px;
+  outline: 1px solid transparent;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+input:hover,
+input:focus {
+  border: 1px solid #1d1ddc;
+}
+.search {
+  height: 40px;
+  border-radius: 4px;
+  padding: 12px 24px;
+  border: 1px solid #030360;
+  border-radius: 4px;
+  color: #030a57;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.search:hover,
+.search:focus {
+  background: #1d1ddc;
+  color: #f0f8ff;
+}
+
+.load-more {
+  margin-left: 400px;
+  margin-top: 10px;
+  height: 48px;
+  border-radius: 4px;
+  padding: 12px 24px;
+  border: 1px solid #030360;
+  border-radius: 4px;
+  color: #030a57;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.load-more:hover,
+.load-more:focus {
+  background: #1d1ddc;
+  color: #f0f8ff;
+}
