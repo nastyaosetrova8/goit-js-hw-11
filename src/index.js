@@ -17,8 +17,6 @@ const PARAMS = `key=37605527-f3cca5f87cf77f5dd7578dcdc&image_type=photo&orientat
 elements.form.addEventListener('submit', handlerSubmit);
 elements.moreBtn.addEventListener('click', handlerClickMore);
 
-elements.moreBtn.hidden = true;
-
 async function fetchRequest(info) {
   const resp = await axios.get(`${BASE_URL}?${PARAMS}&q=${info}`);
   if (resp.status !== 200) {
@@ -35,13 +33,13 @@ async function handlerSubmit(evt) {
     const data = await fetchRequest(query);
 
     if (!data.hits.length) {
-      elements.moreBtn.hidden = true;
+      elements.moreBtn.classList.add('is-hidden');
       Notiflix.Report.info(
         'Sorry, there are no images matching your search query. Please try again.'
       );
     } else {
       Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
-      elements.moreBtn.hidden = false;
+      elements.moreBtn.classList.remove('is-hidden');
     }
 
     elements.gallery.innerHTML = createCardsMarkup(data.hits);
@@ -53,7 +51,7 @@ async function handlerSubmit(evt) {
       captionPosition: 'bottom',
       captionDelay: 250,
     });
-    form.refresh();
+    elements.form.refresh();
 
     console.log(data);
   } catch (err) {
@@ -100,6 +98,7 @@ async function handlerClickMore() {
       'beforeend',
       createCardsMarkup(data.hits)
     );
+
     const { height: cardHeight } = document
       .querySelector('.gallery')
       .firstElementChild.getBoundingClientRect();
@@ -108,16 +107,24 @@ async function handlerClickMore() {
       top: cardHeight * 2,
       behavior: 'smooth',
     });
-    elements.form.refresh();
 
     let maxPage = data.totalHits / 40;
     if (page >= maxPage) {
       console.log(page);
-      elements.moreBtn.hidden = true;
+      elements.moreBtn.classList.add('is-hidden');
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
       );
     }
+
+    const lightbox = new SimpleLightbox('.gallery a', {
+      navText: ['<', '>'],
+      captions: true,
+      captionsData: 'alt',
+      captionPosition: 'bottom',
+      captionDelay: 250,
+    });
+    elements.form.refresh();
   } catch (err) {
     console.log(err);
   }
